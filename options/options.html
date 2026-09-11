@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>SnoozeTabs - Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <div class="tf-page">
+    <header class="tf-page-header">
+      <h1>SnoozeTabs</h1>
+      <p>Control how and when idle tabs get frozen.</p>
+    </header>
+
+    <section class="tf-card">
+      <h2>Freezing</h2>
+
+      <div class="tf-field">
+        <label for="inactivityMinutes">Freeze tabs idle for longer than</label>
+        <div class="tf-field-row">
+          <input type="number" id="inactivityMinutes" min="1" max="1440" />
+          <span>minutes</span>
+        </div>
+      </div>
+
+      <div class="tf-field">
+        <label>Default freeze method</label>
+        <div class="tf-radio-row">
+          <label class="tf-radio">
+            <input type="radio" name="defaultMode" value="discard" />
+            <span><strong>Discard</strong> - unloads the tab from memory; it reloads when clicked. Best CPU/RAM savings.</span>
+          </label>
+          <label class="tf-radio">
+            <input type="radio" name="defaultMode" value="soft" />
+            <span><strong>Soft freeze</strong> - keeps the tab loaded but pauses timers, animations and media. Reopens instantly.</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="tf-field">
+        <label for="checkIntervalMinutes">Check for idle tabs every</label>
+        <div class="tf-field-row">
+          <input type="number" id="checkIntervalMinutes" min="1" max="60" />
+          <span>minutes</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="tf-card">
+      <h2>Exceptions</h2>
+      <label class="tf-checkbox">
+        <input type="checkbox" id="excludePinned" />
+        <span>Never freeze pinned tabs</span>
+      </label>
+      <label class="tf-checkbox">
+        <input type="checkbox" id="excludeAudible" />
+        <span>Never freeze tabs currently playing audio</span>
+      </label>
+      <label class="tf-checkbox">
+        <input type="checkbox" id="excludeForms" />
+        <span>Never freeze tabs with unsaved form input</span>
+      </label>
+    </section>
+
+    <section class="tf-card">
+      <h2>Whitelist - never freeze</h2>
+      <p class="tf-hint">One per line. Plain domains (<code>mail.google.com</code>) match that host and its subdomains. Use <code>*</code> as a wildcard for more control (<code>*.figma.com/*</code>).</p>
+      <textarea id="neverFreezeList" rows="4" placeholder="mail.google.com&#10;*.slack.com/*"></textarea>
+    </section>
+
+    <section class="tf-card">
+      <h2>Force list - always freeze when idle</h2>
+      <p class="tf-hint">Overrides pinned / audio / form exceptions (the active tab is still never touched).</p>
+      <textarea id="alwaysFreezeList" rows="4" placeholder="news.ycombinator.com"></textarea>
+    </section>
+
+    <section class="tf-card tf-card--row">
+      <div>
+        <h2>Backup</h2>
+        <p class="tf-hint">Export your settings to a file, or restore from one.</p>
+      </div>
+      <div class="tf-backup-actions">
+        <button class="tf-btn tf-btn--ghost" id="exportBtn">Export settings</button>
+        <button class="tf-btn tf-btn--ghost" id="importBtn">Import settings</button>
+        <input type="file" id="importFile" accept="application/json" hidden />
+      </div>
+    </section>
+
+    <div class="tf-save-bar">
+      <span class="tf-save-status" id="saveStatus"></span>
+      <button class="tf-btn tf-btn--primary" id="saveBtn">Save changes</button>
+    </div>
+  </div>
+
+  <script src="../lib/browser-compat.js"></script>
+  <script src="options.js"></script>
+</body>
+</html>

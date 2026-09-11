@@ -1,0 +1,16 @@
+{
+  "name": "snoozetabs",
+  "version": "1.0.0",
+  "description": "Browser extension that auto-freezes idle tabs to save CPU and memory.",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "node --test",
+    "lint": "eslint .",
+    "package": "node scripts/package-extension.js"
+  },
+  "devDependencies": {
+    "eslint": "^9.13.0",
+    "globals": "^15.11.0"
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "manifest_version": 3,
+  "name": "SnoozeTabs | Auto Suspend Idle Tabs",
+  "version": "1.0.0",
+  "description": "Automatically freezes or discards inactive tabs to cut CPU and RAM usage, with whitelist/blacklist rules and per-tab control.",
+  "author": "Open source contributors",
+  "homepage_url": "https://github.com/yourname/snoozetabs",
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+
+  "permissions": [
+    "tabs",
+    "storage",
+    "alarms",
+    "scripting"
+  ],
+  "host_permissions": ["<all_urls>"],
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "action": {
+    "default_title": "SnoozeTabs",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "options_ui": {
+    "page": "options/options.html",
+    "open_in_tab": true
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/timer-hooks.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["lib/browser-compat.js", "content/content-script.js", "content/overlay.js"],
+      "run_at": "document_idle",
+      "all_frames": false
+    }
+  ],
+
+  "web_accessible_resources": [
+    {
+      "resources": ["popup/*", "assets/fonts/inter/*", "lib/browser-compat.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+
+  "commands": {
+    "freeze-current-tab": {
+      "suggested_key": { "default": "Alt+Shift+F" },
+      "description": "Freeze the current tab now"
+    },
+    "toggle-auto-freeze": {
+      "suggested_key": { "default": "Alt+Shift+P" },
+      "description": "Pause/resume auto-freezing"
+    }
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "snoozetabs@example.org",
+      "strict_min_version": "128.0"
+    }
+  }
+}

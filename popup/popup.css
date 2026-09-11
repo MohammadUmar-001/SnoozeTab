@@ -1,0 +1,309 @@
+@import url('../assets/fonts/inter/index.css');
+
+* { box-sizing: border-box; }
+
+:root {
+  --bg-page: #fbfbfc;
+  --bg-surface: #ffffff;
+  --text-main: #111827;
+  --text-muted: #6b7280;
+  --border-light: #f3f4f6;
+  --border-hover: #e5e7eb;
+  --accent: #2563eb;
+  --accent-hover: #1d4ed8;
+  --status-active: #22c55e;
+  --status-frozen: #3b82f6;
+  --status-discard: #8b5cf6;
+  --status-excluded: #cbd5e1;
+}
+
+body {
+  margin: 0;
+  width: 100%;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  color: var(--text-main);
+  background: var(--bg-surface);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.tf-header {
+  padding: 10px 12px;
+  background: var(--bg-surface);
+  border-bottom: 1px solid var(--border-hover);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.tf-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tf-brand-mark {
+  width: 20px;
+  height: 20px;
+}
+
+.tf-brand-name {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.tf-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.tf-stat {
+  font-size: 11px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.tf-icon-btn {
+  background: none;
+  border: none;
+  padding: 4px;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tf-icon-btn:hover { background: var(--border-light); color: var(--text-main); }
+
+/* Toggle */
+.tf-switch { position: relative; display: inline-block; cursor: pointer; }
+.tf-switch input { position: absolute; opacity: 0; width: 0; height: 0; }
+.tf-switch-track {
+  display: block;
+  width: 28px;
+  height: 16px;
+  background: var(--border-hover);
+  border-radius: 99px;
+  position: relative;
+  transition: background 0.2s;
+}
+.tf-switch-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
+}
+.tf-switch input:checked + .tf-switch-track { background: var(--accent); }
+.tf-switch input:checked + .tf-switch-track .tf-switch-thumb { transform: translateX(12px); }
+
+/* Tab List */
+.tf-tab-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  overflow-y: auto;
+  max-height: 435px;
+}
+
+.tf-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--border-light);
+  background: var(--bg-surface);
+  transition: background 0.1s;
+}
+.tf-row:hover { background: var(--bg-page); }
+
+.tf-favicon-wrapper {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+.tf-favicon { width: 100%; height: 100%; border-radius: 3px; }
+
+.tf-status-dot {
+  position: absolute;
+  bottom: -4px;
+  right: -4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  border: 2px solid var(--bg-surface);
+}
+.tf-row.is-active .tf-status-dot { background: var(--status-active); }
+.tf-row.is-frozen .tf-status-dot { background: var(--status-frozen); }
+.tf-row.is-discarded .tf-status-dot { background: var(--status-discard); }
+.tf-row.is-excluded .tf-status-dot { background: var(--status-excluded); }
+.tf-row.is-eligible .tf-status-dot { display: none; }
+
+.tf-row-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tf-row-title {
+  margin: 0;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.tf-row-meta {
+  margin: 1px 0 0;
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+.tf-row-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.tf-row:hover .tf-row-actions { opacity: 1; }
+
+.tf-mode-select {
+  font-size: 10px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 2px;
+  cursor: pointer;
+  outline: none;
+}
+.tf-mode-select:hover { background: var(--border-light); color: var(--text-main); }
+
+.tf-action-btn {
+  background: var(--border-light);
+  color: var(--text-main);
+  border: none;
+  border-radius: 4px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.tf-action-btn:hover { background: var(--border-hover); color: var(--accent); }
+.tf-action-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+
+/* SVG toggle based on state */
+.tf-row .icon-wake { display: none; }
+.tf-row.is-frozen .icon-freeze, .tf-row.is-discarded .icon-freeze { display: none; }
+.tf-row.is-frozen .icon-wake, .tf-row.is-discarded .icon-wake { display: block; color: var(--status-frozen); }
+.tf-row.is-frozen .tf-action-btn:hover { background: #e0f2fe; }
+
+.tf-row.is-discarded .icon-wake { color: var(--status-discard); }
+.tf-row.is-discarded .tf-action-btn:hover { background: #f3e8ff; }
+
+/* Custom Animated Dropdown */
+.tf-dropdown {
+  position: relative;
+}
+.tf-dropdown-trigger {
+  font-size: 10px;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 4px 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+.tf-dropdown-trigger:hover {
+  background: var(--border-light);
+  color: var(--text-main);
+}
+.tf-dropdown-menu {
+  display: none;
+  position: absolute;
+  top: calc(100% + 4px);
+  bottom: auto;
+  right: 0;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-light);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  min-width: 80px;
+  z-index: 50;
+  overflow: hidden;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.tf-dropdown.is-upwards .tf-dropdown-menu {
+  top: auto;
+  bottom: calc(100% + 4px);
+  transform: translateY(4px);
+}
+.tf-dropdown.is-active .tf-dropdown-menu {
+  display: block;
+}
+.tf-dropdown.is-open .tf-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.tf-dropdown-item {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 6px 12px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-main);
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  transition: background 0.1s;
+}
+.tf-dropdown-item:hover {
+  background: var(--bg-page);
+  color: var(--accent);
+}
+
+/* Custom Minimal Scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-hover);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--text-muted);
+}
