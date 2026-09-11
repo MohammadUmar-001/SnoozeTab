@@ -1,5 +1,5 @@
 {
-  "name": "snoozetabs",
+  "name": "SnoozeTab",
   "version": "1.0.0",
   "description": "Browser extension that auto-freezes idle tabs to save CPU and memory.",
   "private": true,

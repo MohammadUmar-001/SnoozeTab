@@ -50,11 +50,11 @@ jobs:
 
       - name: Firefox add-on validation (informational only)
         continue-on-error: true
-        run: npx --yes web-ext lint --source-dir dist/tab-freezer --self-hosted
+        run: npx --yes web-ext lint --source-dir dist/SnoozeTab --self-hosted
 
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: tab-freezer-extension
-          path: dist/tab-freezer.zip
+          name: SnoozeTab-extension
+          path: dist/SnoozeTab.zip
           if-no-files-found: error

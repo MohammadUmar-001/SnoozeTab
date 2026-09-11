@@ -77,7 +77,7 @@ popup/                     toolbar popup UI
 options/                   full settings page
 icons/                     generated icon set
 test/                      unit tests for lib/rules.js (node:test)
-scripts/package-extension.js  builds dist/tab-freezer.zip
+scripts/package-extension.js  builds dist/SnoozeTab.zip
 .github/workflows/ci.yml   lint + test + package on every push
 ```
 
@@ -97,7 +97,7 @@ scripts below are dev-only tooling (linting, tests, packaging):
 npm install       # installs eslint + globals (dev only)
 npm test          # runs the rules-engine unit tests (node:test)
 npm run lint      # eslint over the whole project
-npm run package   # builds dist/snoozetabs.zip (excludes tests/config/node_modules)
+npm run package   # builds dist/SnoozeTab.zip (excludes tests/config/node_modules)
 ```
 
 The core freeze/exception logic lives in `lib/rules.js` as a small set of

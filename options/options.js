@@ -67,7 +67,7 @@ els.exportBtn.addEventListener('click', async () => {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'tab-freezer-settings.json';
+  a.download = 'SnoozeTab-settings.json';
   a.click();
   URL.revokeObjectURL(url);
 });

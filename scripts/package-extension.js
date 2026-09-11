@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Packages the extension source into dist/tab-freezer.zip, the way a
+ * Packages the extension source into dist/SnoozeTab.zip, the way a
  * reviewer or "load unpacked" user would want it: no node_modules, tests,
  * lint config, git metadata, etc.
  */
@@ -10,8 +10,8 @@ const { execFileSync } = require('child_process');
 
 const ROOT = path.resolve(__dirname, '..');
 const DIST_DIR = path.join(ROOT, 'dist');
-const STAGE_DIR = path.join(DIST_DIR, 'tab-freezer');
-const ZIP_PATH = path.join(DIST_DIR, 'tab-freezer.zip');
+const STAGE_DIR = path.join(DIST_DIR, 'SnoozeTab');
+const ZIP_PATH = path.join(DIST_DIR, 'SnoozeTab.zip');
 
 const INCLUDE = [
   'manifest.json',
@@ -50,6 +50,6 @@ for (const item of INCLUDE) {
   copyRecursive(src, path.join(STAGE_DIR, item));
 }
 
-execFileSync('zip', ['-r', ZIP_PATH, 'tab-freezer'], { cwd: DIST_DIR, stdio: 'inherit' });
+execFileSync('zip', ['-r', ZIP_PATH, 'SnoozeTab'], { cwd: DIST_DIR, stdio: 'inherit' });
 
 console.log(`\nPackaged: ${path.relative(ROOT, ZIP_PATH)}`);

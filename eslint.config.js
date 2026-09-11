@@ -2,7 +2,7 @@ const globals = require('globals');
 
 module.exports = [
   {
-    ignores: ['tab-freezer.zip', 'dist/**']
+    ignores: ['SnoozeTab.zip', 'dist/**']
   },
   {
     // Background service worker + popup/options pages: browser + WebExtension globals.
