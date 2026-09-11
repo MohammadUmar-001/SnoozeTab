@@ -1,6 +1,6 @@
 # SnoozeTabs
 
-![CI](https://github.com/yourname/snoozetabs/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/MohammadUmar-001/SnoozeTab/actions/workflows/ci.yml/badge.svg)
 
 An open-source browser extension that automatically freezes idle tabs to cut
 CPU and memory usage - with rules, a whitelist/blacklist, and full per-tab

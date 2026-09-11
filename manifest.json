@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Automatically freezes or discards inactive tabs to cut CPU and RAM usage, with whitelist/blacklist rules and per-tab control.",
   "author": "Open source contributors",
-  "homepage_url": "https://github.com/yourname/snoozetabs",
+  "homepage_url": "https://github.com/MohammadUmar-001/SnoozeTab",
 
   "icons": {
     "16": "icons/icon16.png",
